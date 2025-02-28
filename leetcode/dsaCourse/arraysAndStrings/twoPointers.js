@@ -86,7 +86,83 @@ const sortedSquaresLarge = (intArr) => {
     return squares.filter(sq => sq === 0 ? true : Boolean(sq))
 }
 
-module.exports = { reverseString, sortedSquares, sortedSquaresLarge }
+
+// 392. Is Subsequence
+// Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
+
+// A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., "ace" is a subsequence of "abcde" while "aec" is not).
+
+
+// Looks at both strings from either end, comparing letters and incrementing in until there is crossover
+// Only needs to iterate over roughly half of t
+// But in real life would probably just iterate through t from beginning to end since this adds unnecessary complexity 
+function isSubsequence(s, t) {
+
+    // if empty, it will always be considered a substring of t
+    if (s === "") return true
+
+
+    let sLeft = 0;
+    let sRight = s.length - 1;
+    let tLeft = 0;
+    let tRight = t.length - 1;
+
+    let count = 0
+
+    while (tLeft <= tRight) {
+        count++;
+        const sLetterLeft = s[sLeft];
+        const sLetterRight = s[sRight];
+
+        const tLetterLeft = t[tLeft];
+        const tLetterRight = t[tRight];
+
+        // this check for tLeft === tRight makes sure that if we are in the center of t 
+        // and both pointers are pointing to the same letter, we don't count it twice
+        // is arbitrarily on the first if but could be either
+        if (sLetterLeft === tLetterLeft && tLeft !== tRight) {
+            if (sLeft === sRight) return true
+            sLeft++
+        }
+
+        if (sLetterRight === tLetterRight) {
+            if (sLeft === sRight) return true
+            sRight--
+        }
+
+        tLeft++;
+        tRight--;
+
+    }
+
+    console.log({ count, sLen: s.length, tLen: t.length })
+
+    return false;
+};
+
+function isSubsequenceSimple(s, t) {
+    let sPointer = 0;
+
+
+    for (let i = 0; i < t.length; i++) {
+        const letter = t[i]
+        if (sPointer === s.length) return true
+        if (letter === s[sPointer]) {
+            sPointer++
+        }
+
+    }
+
+    return sPointer === s.length
+}
+
+
+
+
+
+
+
+module.exports = { reverseString, sortedSquares, sortedSquaresLarge, isSubsequence, isSubsequenceSimple }
 
 
 
