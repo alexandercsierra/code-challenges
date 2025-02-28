@@ -1,4 +1,4 @@
-const { reverseString } = require('./twoPointers')
+const { reverseString, sortedSquares, sortedSquaresLarge } = require('./twoPointers')
 
 describe('twoPointer problem tests', () => {
 
@@ -42,4 +42,25 @@ describe('twoPointer problem tests', () => {
 
 
 
+    describe('sortedSquares', () => {
+        test('returns correct squares', () => {
+            const input = [-4, -1, 0, 3, 10]
+            const squares = [0, 1, 9, 16, 100]
+
+            const output = sortedSquares(input)
+            const outputLarge = sortedSquaresLarge(input)
+            expect(output).toMatchObject(squares)
+            expect(outputLarge).toMatchObject(squares)
+        })
+
+        test('handles empty input array', () => {
+            expect(sortedSquares([])).toMatchObject([])
+        })
+
+        test('handles array of length 1', () => {
+            expect(sortedSquares([2])).toMatchObject([4])
+        })
+    })
+
 })
+
