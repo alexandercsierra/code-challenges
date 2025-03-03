@@ -1,4 +1,4 @@
-const { runningSum, minStartValue } = require('./prefixSum')
+const { runningSum, minStartValue, getAverages } = require('./prefixSum')
 
 const testCases = [
     {
@@ -34,6 +34,21 @@ const testCasesMinStart = [
     }
 ]
 
+const testCasesGetAverages = [
+    {
+        input: { nums: [7, 4, 3, 9, 1, 8, 5, 2, 6], k: 3 },
+        output: [-1, -1, -1, 5, 4, 4, -1, -1, -1]
+    },
+    {
+        input: { nums: [100000], k: 0 },
+        output: [100000]
+    },
+    {
+        input: { nums: [8], k: 10000 },
+        output: [-1]
+    }
+]
+
 describe('runningSum', () => {
     test.each(testCases)('$input => $output', ({ input, output }) => {
         expect(runningSum(input)).toMatchObject(output)
@@ -45,4 +60,8 @@ describe('minStartValue', () => {
     })
 })
 
-
+describe('getAverages', () => {
+    test.each(testCasesGetAverages)('$input => $output', ({ input, output }) => {
+        expect(getAverages(input)).toMatchObject(output)
+    })
+})
