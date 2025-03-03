@@ -1,3 +1,6 @@
+// nums is an array of integers
+// k denotes the length of the subarray we are looking to average
+// find the largest average we can make with any subarray of nums with length k
 const findMaxAverage = ({ nums, k }) => {
 
     // if there is only one element it is it's own average
@@ -31,5 +34,31 @@ const findMaxAverage = ({ nums, k }) => {
     return maxAverage
 }
 
+// return longest consecutive 1's
+// all integers in nums will be either 0 or 1
+// you can flip at most k 0's to be 1's
+const longestOnes = ({ nums, k }) => {
 
-module.exports = { findMaxAverage }
+    if (k < nums.length && !nums.includes(1)) return k
+
+    let left = 0;
+    let numZeroes = 0;
+    let longestLength = 0;
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] === 0) numZeroes++;
+
+        while (numZeroes > k) {
+            if (nums[left] === 0) {
+                numZeroes--
+            }
+            left++;
+
+        }
+        longestLength = Math.max(i - left + 1, longestLength)
+    }
+
+    return longestLength
+}
+
+
+module.exports = { findMaxAverage, longestOnes }

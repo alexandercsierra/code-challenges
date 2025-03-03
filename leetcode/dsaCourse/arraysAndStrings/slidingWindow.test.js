@@ -1,4 +1,4 @@
-const { findMaxAverage } = require('./slidingWindow')
+const { findMaxAverage, longestOnes } = require('./slidingWindow')
 
 const testCases = [
     {
@@ -11,10 +11,30 @@ const testCases = [
     }
 ]
 
+const testCasesLO = [
+    {
+        input: { nums: [1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0], k: 2 },
+        output: 6
+    },
+    {
+        input: { nums: [0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1], k: 3 },
+        output: 10
+    },
+    {
+        input: { nums: [0, 0, 0, 0], k: 2 },
+        output: 2
+    }
+]
 
 
 describe('findMaxAverage', () => {
     test.each(testCases)('$input => $output', ({ input, output }) => {
         expect(findMaxAverage(input)).toBe(output)
+    })
+})
+
+describe('longestOnes', () => {
+    test.each(testCasesLO)('$input => $output', ({ input, output }) => {
+        expect(longestOnes(input)).toBe(output)
     })
 })
