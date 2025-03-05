@@ -1,3 +1,5 @@
+// 1. Two Sum
+// https://leetcode.com/problems/two-sum/
 // return an array of two indexes which point to numbers that add up to the target given. 
 // there will be only one solution
 const twoSum = ({ nums, target }) => {
