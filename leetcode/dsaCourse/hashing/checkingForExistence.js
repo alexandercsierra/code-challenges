@@ -63,7 +63,20 @@ const missingNumberSum = (nums) => {
 
 }
 
-module.exports = {
-    checkIfPangram, checkIfPangramShort, missingNumber, missingNumberArr, missingNumberSum
+const countElements = (arr) => {
+    const uniqueNums = new Set(arr)
 
+    let count = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (uniqueNums.has(arr[i] + 1)) {
+            count++
+        }
+    }
+
+    return count
 }
+
+module.exports = {
+    checkIfPangram, checkIfPangramShort, missingNumber, missingNumberArr, missingNumberSum, countElements
+}
+

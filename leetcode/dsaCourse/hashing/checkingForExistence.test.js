@@ -1,4 +1,4 @@
-const { checkIfPangram, checkIfPangramShort, missingNumber, missingNumberArr, missingNumberSum } = require('./checkingForExistence')
+const { checkIfPangram, checkIfPangramShort, missingNumber, missingNumberArr, missingNumberSum, countElements } = require('./checkingForExistence')
 
 
 const testCasesPangram = [
@@ -12,7 +12,7 @@ const testCasesPangram = [
     }
 ]
 
-const testCassesMissingNum = [
+const testCasesMissingNum = [
     {
         input: [3, 0, 1],
         output: 2
@@ -35,6 +35,17 @@ const testCassesMissingNum = [
     }
 ]
 
+const testCasesCountElements = [
+    {
+        input: [1, 2, 3],
+        output: 2
+    },
+    {
+        input: [1, 1, 3, 3, 5, 5, 7, 7],
+        output: 0
+    }
+]
+
 
 describe('checkIfPangram', () => {
     test.each(testCasesPangram)('$input => $output', ({ input, output }) => {
@@ -50,18 +61,24 @@ describe('checkIfPangramShort', () => {
 })
 
 describe('missingNumber', () => {
-    test.each(testCassesMissingNum)('$input => $output', ({ input, output }) => {
+    test.each(testCasesMissingNum)('$input => $output', ({ input, output }) => {
         expect(missingNumber(input)).toBe(output)
     })
 })
 describe('missingNumberArr', () => {
-    test.each(testCassesMissingNum)('$input => $output', ({ input, output }) => {
+    test.each(testCasesMissingNum)('$input => $output', ({ input, output }) => {
         expect(missingNumberArr(input)).toBe(output)
     })
 })
 
 describe('missingNumberSum', () => {
-    test.each(testCassesMissingNum)('$input => $output', ({ input, output }) => {
+    test.each(testCasesMissingNum)('$input => $output', ({ input, output }) => {
         expect(missingNumberSum(input)).toBe(output)
+    })
+})
+
+describe('countElements', () => {
+    test.each(testCasesCountElements)('$input => $output', ({ input, output }) => {
+        expect(countElements(input)).toBe(output)
     })
 })
