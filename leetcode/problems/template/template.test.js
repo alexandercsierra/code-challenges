@@ -1,4 +1,4 @@
-const { myFunction, myOtherFunction } = require('./template')
+const { myFunction } = require('./template')
 
 const testCases = [
     {
@@ -19,8 +19,3 @@ describe('myFunction', () => {
     })
 })
 
-describe('myOtherFunction', () => {
-    test.each(testCases)('$input => $output', ({ input, output }) => {
-        expect(myOtherFunction(input)).toBe(output)
-    })
-})
