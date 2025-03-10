@@ -65,4 +65,25 @@ const findWinnersSets = (matches) => {
     return [sortedZeroLoss, sortedOneLoss]
 }
 
-module.exports = { findWinners, findWinnersSets }
+function largestUniqueNumber(nums) {
+    const numMap = new Map()
+
+    for (let i = 0; i < nums.length; i++) {
+        numMap.set(nums[i], (numMap.get(nums[i]) || 0) + 1)
+    }
+
+    let max = -1;
+
+    numMap.forEach((value, key) => {
+        if (value === 1 && key > max) {
+            max = key
+        }
+    })
+
+
+    return max
+
+
+};
+
+module.exports = { findWinners, findWinnersSets, largestUniqueNumber }

@@ -1,4 +1,4 @@
-const { findWinners, findWinnersSets } = require('./counting')
+const { findWinners, findWinnersSets, largestUniqueNumber } = require('./counting')
 
 const testCasesFindWinners = [
     {
@@ -15,6 +15,17 @@ const testCasesFindWinners = [
     }
 ]
 
+const testCasesUniqueNum = [
+    {
+        input: [5, 7, 3, 9, 4, 9, 8, 3, 1],
+        output: 8
+    },
+    {
+        input: [9, 9, 8, 8],
+        output: -1
+    }
+]
+
 describe('findWinners', () => {
     test.each(testCasesFindWinners)('$input => $output', ({ input, output }) => {
         expect(findWinners(input)).toMatchObject(output)
@@ -26,3 +37,9 @@ describe('findWinnersSets', () => {
         expect(findWinnersSets(input)).toMatchObject(output)
     })
 })
+describe('largestUniqueNumber', () => {
+    test.each(testCasesUniqueNum)('$input => $output', ({ input, output }) => {
+        expect(largestUniqueNumber(input)).toBe(output)
+    })
+})
+
