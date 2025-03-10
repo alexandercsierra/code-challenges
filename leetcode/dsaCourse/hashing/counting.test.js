@@ -1,4 +1,4 @@
-const { findWinners, findWinnersSets, largestUniqueNumber } = require('./counting')
+const { findWinners, findWinnersSets, largestUniqueNumber, maxNumberOfBalloons } = require('./counting')
 
 const testCasesFindWinners = [
     {
@@ -26,6 +26,29 @@ const testCasesUniqueNum = [
     }
 ]
 
+const testCasesBalloon = [
+    {
+        input: "krhizmmgmcrecekgyljqkldocicziihtgpqwbticmvuyznragqoyrukzopfmjhjjxemsxmrsxuqmnkrzhgvtgdgtykhcglurvppvcwhrhrjoislonvvglhdciilduvuiebmffaagxerjeewmtcwmhmtwlxtvlbocczlrppmpjbpnifqtlninyzjtmazxdbzwxthpvrfulvrspycqcghuopjirzoeuqhetnbrcdakilzmklxwudxxhwilasbjjhhfgghogqoofsufysmcqeilaivtmfziumjloewbkjvaahsaaggteppqyuoylgpbdwqubaalfwcqrjeycjbbpifjbpigjdnnswocusuprydgrtxuaojeriigwumlovafxnpibjopjfqzrwemoinmptxddgcszmfprdrichjeqcvikynzigleaajcysusqasqadjemgnyvmzmbcfrttrzonwafrnedglhpudovigwvpimttiketopkvqw",
+        output: 10
+    },
+    {
+        input: "leetcode",
+        output: 0
+    },
+    {
+        input: 'balon',
+        output: 0
+    },
+    {
+        input: "nlaebolko",
+        output: 1
+    },
+    {
+        input: 'loonbalxballpoon',
+        output: 2
+    }
+]
+
 describe('findWinners', () => {
     test.each(testCasesFindWinners)('$input => $output', ({ input, output }) => {
         expect(findWinners(input)).toMatchObject(output)
@@ -40,6 +63,11 @@ describe('findWinnersSets', () => {
 describe('largestUniqueNumber', () => {
     test.each(testCasesUniqueNum)('$input => $output', ({ input, output }) => {
         expect(largestUniqueNumber(input)).toBe(output)
+    })
+})
+describe('maxNumberOfBalloons', () => {
+    test.each(testCasesBalloon)('$input => $output', ({ input, output }) => {
+        expect(maxNumberOfBalloons(input)).toBe(output)
     })
 })
 

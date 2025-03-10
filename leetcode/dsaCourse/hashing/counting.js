@@ -86,4 +86,41 @@ function largestUniqueNumber(nums) {
 
 };
 
-module.exports = { findWinners, findWinnersSets, largestUniqueNumber }
+// for a given string, see how many times, using each letter at most once, you can make the word 'balloon'. 
+const maxNumberOfBalloons = (text) => {
+    const balloonMap = {
+        "b": 1,
+        "a": 1,
+        "l": 2,
+        "o": 2,
+        "n": 1
+    }
+
+    const letterSet = new Set(['b', 'a', 'l', 'o', 'n'])
+
+
+    let currMap = {}
+
+    // save the frequency of each letter which is needed to form the word "balloon"
+    for (let i = 0; i < text.length; i++) {
+        if (letterSet.has(text[i])) {
+            currMap[text[i]] = (currMap[text[i]] || 0) + 1
+        }
+
+    }
+
+    let resultArr = []
+
+    // store the number of times you could theoretically make the word "balloon" with each individual letter (assuming all the others are present in the correct amount)
+    for (let letter in currMap) {
+        resultArr.push(Math.floor(currMap[letter] / balloonMap[letter]))
+
+    }
+
+
+    // if we have less than five entries, we definitely don't have enough letters
+    // otherwise take the lowest number
+    return resultArr.length >= 5 ? Math.min(...resultArr) : 0
+}
+
+module.exports = { findWinners, findWinnersSets, largestUniqueNumber, maxNumberOfBalloons }
