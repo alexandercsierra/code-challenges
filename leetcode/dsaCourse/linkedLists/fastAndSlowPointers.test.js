@@ -1,4 +1,4 @@
-const { middleNode } = require('./fastAndSlowPointers')
+const { middleNode, deleteDuplicates } = require('./fastAndSlowPointers')
 
 class ListNode {
     constructor(val, next) {
@@ -32,10 +32,32 @@ const testCasesMiddle = [
     }
 ]
 
+const testCasesDupes = [
+    {
+        input: [1, 1, 2],
+        output: [1, 2]
+    },
+    {
+        input: [1, 1, 2, 3, 3],
+        output: [1, 2, 3]
+    },
+    {
+        input: [],
+        output: []
+    }
+]
+
 describe('middleNode', () => {
     test.each(testCasesMiddle)('$input => $output', ({ input, output }) => {
         const ll = createLinkedList(input)
         const result = createLinkedList(output)
         expect(middleNode(ll)).toMatchObject(result)
+    })
+})
+describe('deleteDuplicates', () => {
+    test.each(testCasesDupes)('$input => $output', ({ input, output }) => {
+        const ll = createLinkedList(input)
+        const result = createLinkedList(output)
+        expect(deleteDuplicates(ll)).toMatchObject(result)
     })
 })

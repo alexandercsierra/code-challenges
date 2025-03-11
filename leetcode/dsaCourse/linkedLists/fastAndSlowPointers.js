@@ -12,4 +12,25 @@ function middleNode(head) {
     return slow
 };
 
-module.exports = { middleNode }
+// remove duplicates from a sorted linked list
+function deleteDuplicates(head) {
+    if (!head?.next) return head
+    let node = head;
+    let next = head.next;
+
+    while (next) {
+        if (node.val === next.val) {
+            node.next = node.next.next;
+            next.next = null;
+            next = node.next;
+        } else {
+            node = next;
+            next = node.next;
+        }
+
+
+    }
+    return head
+};
+
+module.exports = { middleNode, deleteDuplicates }
