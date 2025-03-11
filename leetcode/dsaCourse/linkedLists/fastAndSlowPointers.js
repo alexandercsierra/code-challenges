@@ -1,3 +1,5 @@
+// return the middle node of a linked list
+// if there are two, return second node
 function middleNode(head) {
     let slow = head;
     let fast = head;
