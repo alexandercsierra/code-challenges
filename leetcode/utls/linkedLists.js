@@ -19,4 +19,4 @@ const createLinkedList = (arr) => {
 
 }
 
-module.exports = { createLinkedList }
+module.exports = { createLinkedList, ListNode }
